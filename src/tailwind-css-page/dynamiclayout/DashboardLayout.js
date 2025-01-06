@@ -79,7 +79,7 @@ const DashboardLayout = ({ children }) => {
 
         {/* Main Content */}
         <main
-          className={`transition-all duration-300 flex-grow h-screen overflow-y-auto ${
+          className={`transition-all duration-300 flex-grow  ${
             isSidebarOpen ? "blur-sm lg:blur-none" : ""
           }`}
         >
@@ -99,7 +99,9 @@ const DashboardLayout = ({ children }) => {
               <button
                 className="bg-green-400 lg:p-3 rounded-lg text-white lg:w-auto lg:text-md text-sm p-2"
                 onClick={() =>
-                  navigate(currentPath.includes("/contact") ? "/dashboard" : "/contact")
+                  navigate(
+                    currentPath.includes("/contact") ? "/dashboard" : "/contact"
+                  )
                 }
               >
                 {currentPath.includes("/contact")
@@ -108,7 +110,7 @@ const DashboardLayout = ({ children }) => {
               </button>
             </div>
           </nav>
-          <div className="pt-5 w-full h-[85vh] flex gap-2 px-4">
+          <div className="pt-5 w-full flex gap-2 px-4 flex-grow h-[calc(100vh-4rem)]">
             <div className="font-bold">Back</div>
             {children}
           </div>
