@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Menu, X, Home, Settings, User, Phone, HelpCircle } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+
 const DashboardLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
-  const location = useLocation(); // Get the current route
-  const currentPath = location.pathname; // Dynamically update based on route
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Define menu items
   const getSidebarItems = () => {
     const defaultItems = [
       { icon: <Home size={20} />, text: "Dashboard", path: "/dashboard" },
@@ -24,23 +24,14 @@ const DashboardLayout = ({ children }) => {
       { icon: <Phone size={20} />, text: "Contact", path: "/contact" },
     ];
 
-    // If the current path includes "account-setup", show the accountSetupItems
-    if (currentPath.includes("/contact")) {
-      return accountSetupItems;
-    }
-    return defaultItems;
+    return currentPath.includes("/contact") ? accountSetupItems : defaultItems;
   };
 
-  // Navigate to a new route
   const handleNavigation = (path) => {
-    navigate(path); // Navigate to the clicked route
-    if (window.innerWidth < 1024) {
-      setIsSidebarOpen(false); // Close sidebar on mobile
-    }
-  };
-
-  const handelnavigate = (path) => {
     navigate(path);
+    if (window.innerWidth < 1024) {
+      setIsSidebarOpen(false);
+    }
   };
 
   return (
@@ -48,7 +39,7 @@ const DashboardLayout = ({ children }) => {
       <div className="flex">
         {/* Sidebar */}
         <div
-          className={`fixed inset-y-0 left-0   bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-20 
+          className={`fixed inset-y-0 left-0 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-20 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:translate-x-0 lg:static lg:block`}
         >
@@ -66,7 +57,7 @@ const DashboardLayout = ({ children }) => {
               {getSidebarItems().map((item, index) => (
                 <li key={index}>
                   <button
-                    onClick={() => handleNavigation(item.path)} 
+                    onClick={() => handleNavigation(item.path)}
                     className={`flex items-center w-full p-3 rounded-md cursor-pointer transition-colors
                     ${
                       currentPath === item.path
@@ -80,8 +71,7 @@ const DashboardLayout = ({ children }) => {
                 </li>
               ))}
             </ul>
-            {/* Logout Button at the Bottom */}
-            <button className="mt-auto p-3 w-full mb-6  text-white bg-gray-500 rounded-md">
+            <button className="mt-auto p-3 w-full mb-6 text-white bg-gray-500 rounded-md">
               Logout
             </button>
           </div>
@@ -89,46 +79,41 @@ const DashboardLayout = ({ children }) => {
 
         {/* Main Content */}
         <main
-          className={` transition-all duration-300 flex-grow h-screen overflow-y-auto ${
+          className={`transition-all duration-300 flex-grow h-screen overflow-y-auto ${
             isSidebarOpen ? "blur-sm lg:blur-none" : ""
           }`}
         >
-          {/* Navigation Bar */}
-          <nav className="bg-white shadow-md  h-16 sticky top-0 flex items-center px-4 gap-4 ">
+          <nav className="bg-white shadow-md h-16 sticky top-0 flex items-center px-4 gap-4">
             <button
               onClick={toggleSidebar}
               className="lg:hidden text-gray-600 hover:text-gray-900"
             >
-              {<Menu size={24} />}
+              <Menu size={24} />
             </button>
             <div className="flex justify-between flex-grow">
               <h1 className="text-xl font-bold text-gray-800 ml-4">
-                {currentPath.includes("contact")
+                {currentPath.includes("/contact")
                   ? "Contact Section"
                   : "Dashboard"}
               </h1>
               <button
-                className="bg-green-400 lg:p-3 rounded-lg text-white lg:w-auto lg:text-md text-sm  p-2"
+                className="bg-green-400 lg:p-3 rounded-lg text-white lg:w-auto lg:text-md text-sm p-2"
                 onClick={() =>
-                  currentPath.includes("contact")
-                    ? handelnavigate("/dashboard")
-                    : handelnavigate("/contact")
+                  navigate(currentPath.includes("/contact") ? "/dashboard" : "/contact")
                 }
               >
-                {currentPath.includes("contact")
+                {currentPath.includes("/contact")
                   ? "Go to Dashboard"
                   : "Go to Contact Section"}
               </button>
             </div>
           </nav>
-          {/* Main page */}
-          <div className="pt-5 w-full   flex gap-2 px-4">
-            <div className="font-bold ">Back</div>
+          <div className="pt-5 w-full h-[85vh] flex gap-2 px-4">
+            <div className="font-bold">Back</div>
             {children}
           </div>
         </main>
       </div>
-      {/* Overlay for mobile */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-0 lg:hidden"
