@@ -110,7 +110,7 @@ const DashboardLayout = ({ children }) => {
               </button>
             </div>
           </nav>
-          <div className="pt-5 w-full flex gap-2 px-4 flex-grow h-[calc(100vh-4rem)]">
+          <div className="pt-5 w-full flex gap-2 px-4 flex-grow h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="font-bold">Back</div>
             {children}
           </div>
