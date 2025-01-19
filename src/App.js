@@ -15,6 +15,7 @@ import Setting from "./tailwind-css-page/dynamiclayout/pages/Setting";
 import Help from "./tailwind-css-page/dynamiclayout/pages/Help";
 import Contact from "./tailwind-css-page/dynamiclayout/contact/Contact";
 import DashboardLayoutRoutes from "./tailwind-css-page/dynamiclayout/DashboardLayoutRoutes";
+import Objectoperation from "./Object_ArrayConcept/Objectoperation";
 
 function App() {
   return (
@@ -30,12 +31,15 @@ function App() {
       {/* <Navbar /> */}
 
       {/* First page is allrounder page  */}
-      <FirstPage />
+      {/* <FirstPage /> */}
 
       {/* <CardShow /> */}
 
       {/* DynamicLayout  */}
       {/* <DashboardLayoutRoutes /> */}
+
+      {/*Object Array Operation*/}
+      <Objectoperation/>
     </>
   );
 }
