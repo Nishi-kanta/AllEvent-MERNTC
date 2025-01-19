@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import swigy from "../../image/s.png";
 
 const ResponsivewithCard = () => {
-  const [isselected, setIsSelected] = useState({ idx: 1 });
+  // const [isselected, setIsSelected] = useState({ idx: 1 });
   const [selectedval, setSelectedValue] = useState({
-    id: 0,
+    id: 1,
     name: "",
     description: "",
     type: "",
@@ -15,10 +15,10 @@ const ResponsivewithCard = () => {
   const cardselected = (value) => {
     // setSelectedValue(value);
     setSelectedValue((prevval) => ({ ...prevval, ...value }));
-    setIsSelected((prevState) => ({
-      ...prevState,
-      idx: value.id,
-    }));
+    // setIsSelected((prevState) => ({
+    //   ...prevState,
+    //   idx: value.id,
+    // }));
     if (value.type === "first") {
       setIsPopupOpen(true);
     }
@@ -41,6 +41,7 @@ const ResponsivewithCard = () => {
       id: 3,
       name: "Card3",
       description: "Description for card 3.",
+      type: "first",
     },
     {
       id: 4,
@@ -65,7 +66,6 @@ const ResponsivewithCard = () => {
 
   const closePopup = () => {
     setIsPopupOpen(false);
-    setSelectedValue(null);
   };
 
   return (
@@ -86,7 +86,7 @@ const ResponsivewithCard = () => {
                 // openPopup();
               }}
               className={` ${
-                isselected.idx === item.id ? "border-[2px] border-cyan-400" : ""
+                selectedval.id === item.id ? "border-[2px] border-cyan-400" : ""
               } bg-white  hover:shadow-2xl transition-shadow duration-300 rounded-lg p-6 text-start w-[50vw] h-[30vh] sm:w-[28vw] sm:h-[28vh] overflow-hidden flex flex-col`}
             >
               {/* <div className="flex justify-center items-center md:justify-start md:items-start w-full mb-4"> */}

@@ -30,12 +30,12 @@ function App() {
       {/* <Navbar /> */}
 
       {/* First page is allrounder page  */}
-      {/* <FirstPage /> */}
+      <FirstPage />
 
       {/* <CardShow /> */}
 
       {/* DynamicLayout  */}
-      <DashboardLayoutRoutes />
+      {/* <DashboardLayoutRoutes /> */}
     </>
   );
 }
