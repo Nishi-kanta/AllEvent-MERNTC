@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { faqData } from "../Data/FaqData";
-import PasswordHideShow from "./PasswordHideShow";
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState(faqData[0].id);
@@ -44,7 +43,6 @@ const FaqSection = () => {
           </li>
         ))}
       </ul>
-      <PasswordHideShow />
     </div>
   );
 };

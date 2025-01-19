@@ -94,7 +94,8 @@ const DashboardLayout = ({ children }) => {
               <h1 className="text-xl font-bold text-gray-800 ml-4">
                 {currentPath.includes("/contact")
                   ? "Contact Section"
-                  : "Dashboard"}
+                  : currentPath.includes("/dashboard") && "DashBoard" || currentPath.includes("/profile") && "Profile" || 
+                  currentPath.includes("/setting") && "Setting" || currentPath.includes("/help") && "Help" }
               </h1>
               <button
                 className="bg-green-400 lg:p-3 rounded-lg text-white lg:w-auto lg:text-md text-sm p-2"

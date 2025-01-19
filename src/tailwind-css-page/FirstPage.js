@@ -7,6 +7,8 @@ import Containerdiv from "./containerdesign/Containerdiv";
 import ResponsiveNavBar from "./responsivenavbar/ResponsiveNavBar";
 import ResponsivewithCard from "./responsivewithcard/responsivewithcard";
 import CardSliding from "./cardsliding/CardSliding";
+import PasswordHideShow from "../Stateconcept/PasswordHideShow";
+import FaqSection from "../Stateconcept/FaqSection";
 
 const FirstPage = () => {
   return (
@@ -89,8 +91,8 @@ const FirstPage = () => {
       {/* <Containerdiv /> */}
 
       {/*Resposive navbar with design*/}
-      {/* <ResponsiveNavBar /> */}
-      {/* <div className="min-h-screen overflow-y-auto">
+      <ResponsiveNavBar />
+      <div className="min-h-screen overflow-y-auto">
         <h1>Nishi</h1>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
@@ -226,12 +228,18 @@ const FirstPage = () => {
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
-      </div> */}
+      </div>
       {/*Responsive card*/}
       {/* <ResponsivewithCard /> */}
 
       {/*CardSliding*/}
-      <CardSliding />
+      {/* <CardSliding /> */}
+
+      {/*Password show and hide concept*/}
+       {/* <PasswordHideShow/> */}
+
+       {/*Faq section */}
+       {/* <FaqSection/> */}
     </div>
   );
 };
