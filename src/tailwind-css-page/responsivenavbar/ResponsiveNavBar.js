@@ -31,14 +31,24 @@ const ResponsiveNavBar = () => {
     },
     {
       link: "",
-      text: "Customers",
+      text: "Industry",
       dropdown: [
-        { link: "#", text: "Customer One" },
-        { link: "#", text: "Customer Two" },
-        { link: "#", text: "Customer Three" },
+        { link: "#", text: "Industry One" },
+        { link: "#", text: "Industry Two" },
+        { link: "#", text: "Industry Three" },
       ],
     },
+    {
+      link: "",
+      text: "Customers",
+      // dropdown: [
+      //   { link: "#", text: "Customer One" },
+      //   { link: "#", text: "Customer Two" },
+      //   { link: "#", text: "Customer Three" },
+      // ],
+    },
   ];
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -58,6 +68,12 @@ const ResponsiveNavBar = () => {
     setActiveItem(mainItemText); // Set the active main item text color
     setHoveredItem(null); // Clear the hovered item after selection
     setIsOpen(false);
+  };
+
+  // active nodropdowntext
+  const handlenoDropdownSelect = (mainItemNoDropDown) => {
+    setActiveItem(mainItemNoDropDown);
+    setSelectedItem(null); // remove the selected dropdown item
   };
 
   useEffect(() => {
@@ -99,43 +115,57 @@ const ResponsiveNavBar = () => {
             {/* Desktop Menu */}
             <nav className="hidden lg:flex space-x-6 text-[#000000] md:text-[16px] md:font-semibold">
               {listitem.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative group"
-                  onMouseEnter={() => setHoveredItem(item.text)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
-                  <Link
-                    to={item.link}
-                    className={`block py-2 ${
-                      activeItem === item.text ? "text-blue-500" : "text-black"
-                    }`}
-                  >
-                    {item.text}
-                  </Link>
-                  {hoveredItem === item.text && (
-                    <div className="absolute left-0 mt-0 bg-white shadow-lg space-y-2 z-50 w-40">
-                      {item.dropdown.map((dropdownItem, dropdownIndex) => (
-                        <Link
-                          key={dropdownIndex}
-                          to={dropdownItem.link}
-                          className={`block px-4 py-2 text-black ${
-                            selectedItem === dropdownItem.text
-                              ? "bg-blue-500 text-white"
-                              : ""
-                          }`} // Apply active styles if selected
-                          onClick={() =>
-                            handleDropdownSelect(dropdownItem.text, item.text)
-                          }
-                        >
-                          {dropdownItem.text}
-                        </Link>
-                      ))}
+                <React.Fragment key={index}>
+                  {item.dropdown ? ( // Only render this block if dropdown exists
+                    <div
+                      className="relative group"
+                      onMouseEnter={() => setHoveredItem(item.text)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                    >
+                      <Link
+                        to={item.link}
+                        className={`block py-2 ${activeItem === item.text ? "text-blue-500" : "text-black"
+                          }`}
+                      >
+                        {item.text}
+                      </Link>
+                      {hoveredItem === item.text && (
+                        <div className="absolute left-0 mt-0 bg-white shadow-lg space-y-2 z-50 w-40">
+                          {item.dropdown.map((dropdownItem, dropdownIndex) => (
+                            <Link
+                              key={dropdownIndex}
+                              to={dropdownItem.link}
+                              className={`block px-4 py-2 text-black ${selectedItem === dropdownItem.text
+                                  ? "bg-blue-500 text-white"
+                                  : ""
+                                }`}
+                              onClick={() =>
+                                handleDropdownSelect(dropdownItem.text, item.text)
+                              }
+                            >
+                              {dropdownItem.text}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
+                  ) : (
+                    // If there's no dropdown, render the Customers link
+                    <Link
+                      className={`block py-2 ${activeItem === item.text ? "text-blue-500" : "text-black"
+                        }`}
+                      onClick={() => {
+                        alert("hii");
+                        handlenoDropdownSelect(item.text);
+                      }}
+                    >
+                      {item.text}
+                    </Link>
                   )}
-                </div>
+                </React.Fragment>
               ))}
             </nav>
+
           </div>
           {/* Buttons */}
           <div className="hidden lg:flex space-x-4  border border-[#000000] rounded-lg p-2">
@@ -168,9 +198,8 @@ const ResponsiveNavBar = () => {
         {isOpen && (
           <div className="fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-md">
             <nav
-              className={`lg:hidden bg-white text-[#000000] text-[16px] font-normal p-4 absolute top-0 right-0 w-3/4 h-full transform transition-transform duration-300 ease-in-out ${
-                isOpen ? "translate-x-0" : "translate-x-full"
-              }`}
+              className={`lg:hidden bg-white text-[#000000] text-[16px] font-normal p-4 absolute top-0 right-0 w-3/4 h-full transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+                }`}
               style={{
                 transform: isOpen ? "translateX(0)" : "translateX(100%)",
               }}
@@ -183,57 +212,87 @@ const ResponsiveNavBar = () => {
               </button>
               <div className="w-full">
                 {listitem?.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col justify-center items-center"
-                  >
-                    {/* Main item link */}
+                  <>
                     <div
-                      className="flex items-center space-x-2 cursor-pointer"
-                      onClick={() => toggleDropdown(index)}
+                      key={index}
+                      className="flex flex-col justify-center items-center"
                     >
-                      <Link
-                        to={item.link}
-                        className={`block py-2 ${
-                          activeItem === item.text
-                            ? "text-blue-500"
-                            : "text-black"
-                        }`}
+                      {/* Main item link */}
+                      <div
+                        className="flex items-center space-x-2 cursor-pointer "
+                        onClick={() => toggleDropdown(index)}
                       >
-                        {item.text}
-                      </Link>
-                      {/* Arrow icon, rotates when dropdown is active */}
-                      <span
-                        className={`${
-                          activeDropdown === index ? "rotate-180" : "rotate-0"
-                        } transition-transform duration-200`}
-                      >
-                        ▼
-                      </span>
-                    </div>
-
-                    {/* Show dropdown items when active */}
-                    {activeDropdown === index && (
-                      <div className="mt-2 space-y-2 z-90">
-                        {item.dropdown.map((dropdownItem, dropdownIndex) => (
-                          <Link
-                            key={dropdownIndex}
-                            to={dropdownItem.link}
-                            className={`block px-4 py-2 text-black ${
-                              selectedItem === dropdownItem.text
-                                ? "bg-blue-500 text-white"
-                                : ""
-                            }`} // Apply active styles if selected
-                            onClick={() =>
-                              handleDropdownSelect(dropdownItem.text, item.text)
-                            }
-                          >
-                            {dropdownItem.text}
-                          </Link>
-                        ))}
+                        <Link
+                          to={item.link}
+                          className={`block py-2 ${activeItem === item.text
+                              ? "text-blue-500"
+                              : "text-black"
+                            }`}
+                        >
+                          {item?.dropdown?.length > 0 &&
+                            item?.text !== "Customers" ? (
+                            <>{item?.text}</>
+                          ) : (
+                            ""
+                          )}
+                        </Link>
+                        {/* Arrow icon, rotates when dropdown is active */}
+                        <span
+                          className={`${activeDropdown === index ? "rotate-180" : "rotate-0"
+                            } transition-transform duration-200`}
+                        >
+                          {item?.dropdown?.length > 0 &&
+                            item?.text !== "Customers" ? (
+                            <>▼</>
+                          ) : (
+                            ""
+                          )}
+                        </span>
                       </div>
-                    )}
-                  </div>
+
+                      {/* Show dropdown items when active */}
+                      {activeDropdown === index && (
+                        <div className="mt-2 space-y-2 z-90">
+                          {item?.dropdown?.map(
+                            (dropdownItem, dropdownIndex) => (
+                              <Link
+                                key={dropdownIndex}
+                                to={dropdownItem.link}
+                                className={`block px-4 py-2 text-black ${selectedItem === dropdownItem.text
+                                    ? "bg-blue-500 text-white"
+                                    : ""
+                                  }`} // Apply active styles if selected
+                                onClick={() =>
+                                  handleDropdownSelect(
+                                    dropdownItem.text,
+                                    item.text
+                                  )
+                                }
+                              >
+                                {dropdownItem.text}
+                              </Link>
+                            )
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center flex-col justify-start">
+                      {item?.text === "Customers" && (
+                        <Link
+                          className={`block py-2 ${activeItem === item.text
+                              ? "text-blue-500"
+                              : "text-black"
+                            }`}
+                          onClick={() => {
+                            alert("hii");
+                            handlenoDropdownSelect(item.text);
+                          }}
+                        >
+                          {item?.text}
+                        </Link>
+                      )}
+                    </div>
+                  </>
                 ))}
               </div>
               {/* Buttons visible in the mobile menu */}

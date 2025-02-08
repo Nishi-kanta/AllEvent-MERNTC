@@ -31,7 +31,7 @@ function App() {
       {/* <Navbar /> */}
 
       {/* First page is allrounder page  */}
-      {/* <FirstPage /> */}
+      <FirstPage />
 
       {/* <CardShow /> */}
 
@@ -39,7 +39,7 @@ function App() {
       {/* <DashboardLayoutRoutes /> */}
 
       {/*Object Array Operation*/}
-      <Objectoperation/>
+      {/* <Objectoperation/> */}
     </>
   );
 }

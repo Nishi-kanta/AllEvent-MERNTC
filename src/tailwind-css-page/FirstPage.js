@@ -91,7 +91,7 @@ const FirstPage = () => {
       {/* <Containerdiv /> */}
 
       {/*Resposive navbar with design*/}
-      <ResponsiveNavBar />
+      {/* <ResponsiveNavBar />
       <div className="min-h-screen overflow-y-auto">
         <h1>Nishi</h1>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
@@ -228,12 +228,12 @@ const FirstPage = () => {
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
-      </div>
+      </div> */}
       {/*Responsive card*/}
       {/* <ResponsivewithCard /> */}
 
       {/*CardSliding*/}
-      {/* <CardSliding /> */}
+      <CardSliding />
 
       {/*Password show and hide concept*/}
        {/* <PasswordHideShow/> */}
