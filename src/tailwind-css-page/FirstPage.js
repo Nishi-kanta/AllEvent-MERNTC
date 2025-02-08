@@ -9,6 +9,11 @@ import ResponsivewithCard from "./responsivewithcard/responsivewithcard";
 import CardSliding from "./cardsliding/CardSliding";
 import PasswordHideShow from "../Stateconcept/PasswordHideShow";
 import FaqSection from "../Stateconcept/FaqSection";
+import TodoApp from "./todo/TodoApp";
+import PaginatedAPI from "./pagination/PaginatedAPI";
+import PaginatedList from "./pagination/PaginatedList";
+import Otp from "./otp/Otp";
+
 
 const FirstPage = () => {
   return (
@@ -91,8 +96,8 @@ const FirstPage = () => {
       {/* <Containerdiv /> */}
 
       {/*Resposive navbar with design*/}
-      {/* <ResponsiveNavBar />
-      <div className="min-h-screen overflow-y-auto">
+      <ResponsiveNavBar />
+      {/* <div className="min-h-screen overflow-y-auto">
         <h1>Nishi</h1>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
         <p>Loremklklkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
@@ -233,13 +238,23 @@ const FirstPage = () => {
       {/* <ResponsivewithCard /> */}
 
       {/*CardSliding*/}
-      <CardSliding />
+      {/* <CardSliding /> */}
 
       {/*Password show and hide concept*/}
        {/* <PasswordHideShow/> */}
 
        {/*Faq section */}
        {/* <FaqSection/> */}
+
+        {/*todo section */}
+       {/* <TodoApp/> */}
+
+        {/*Pagination section */}
+       {/* <PaginatedAPI/>
+        <PaginatedList/> */}
+ 
+        {/*Otp section */}
+       {/* <Otp/> */}
     </div>
   );
 };
