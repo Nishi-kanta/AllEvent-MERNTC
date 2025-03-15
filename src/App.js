@@ -16,6 +16,12 @@ import Help from "./tailwind-css-page/dynamiclayout/pages/Help";
 import Contact from "./tailwind-css-page/dynamiclayout/contact/Contact";
 import DashboardLayoutRoutes from "./tailwind-css-page/dynamiclayout/DashboardLayoutRoutes";
 import Objectoperation from "./Object_ArrayConcept/Objectoperation";
+import TodoApp from "./tailwind-css-page/todo/TodoApp";
+import DsLandingPage from "./tailwind-css-page/landing-page-by-deepseek/DsLandingPage";
+import Otp from "./tailwind-css-page/otp/Otp";
+import PaginatedAPI from "./tailwind-css-page/pagination/PaginatedAPI";
+import PaginatedList from "./tailwind-css-page/pagination/PaginatedList";
+import DashBoardNavSide from "./tailwind-css-page/responsive-layout-claude/DashBoardNavSide";
 
 function App() {
   return (
@@ -31,12 +37,30 @@ function App() {
       {/* <Navbar /> */}
 
       {/* First page is allrounder page  */}
-      <FirstPage />
+      {/* <FirstPage /> */}
 
       {/* <CardShow /> */}
 
       {/* DynamicLayout  */}
       {/* <DashboardLayoutRoutes /> */}
+
+      {/*Responsive Layout using claude*/}
+      <DashBoardNavSide />
+
+      {/*TodoApp*/}
+      {/* <TodoApp /> */}
+
+      {/*DeepSeek Landing Page*/}
+      {/* <DsLandingPage /> */}
+
+      {/*OTP page*/}
+      {/* <Otp /> */}
+
+      {/*Pagination with API*/}
+      {/* <PaginatedAPI /> */}
+
+      {/*Pagination with UI List*/}
+      {/* <PaginatedList /> */}
 
       {/*Object Array Operation*/}
       {/* <Objectoperation/> */}
