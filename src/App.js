@@ -45,7 +45,7 @@ function App() {
       {/* <DashboardLayoutRoutes /> */}
 
       {/*Responsive Layout using claude*/}
-      <DashBoardNavSide />
+      {/* <DashBoardNavSide /> */}
 
       {/*TodoApp*/}
       {/* <TodoApp /> */}
@@ -63,7 +63,7 @@ function App() {
       {/* <PaginatedList /> */}
 
       {/*Object Array Operation*/}
-      {/* <Objectoperation/> */}
+      <Objectoperation/>
     </>
   );
 }

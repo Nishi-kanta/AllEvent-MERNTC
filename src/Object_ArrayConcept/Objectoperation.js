@@ -4,10 +4,10 @@ const Objectoperation = () => {
     const [puserval,setUserVal]= useState([]);
 
     const data = {
-        known: [
-          { name: "Punam", age: 25, email: "punam@example.com" },
-          { name: "Deva", age: 28, email: "deva@example.com" },
-        ],
+        // known: [
+        //   { name: "Punam", age: 25, email: "punam@example.com" },
+        //   { name: "Deva", age: 28, email: "deva@example.com" },
+        // ],
         unknown: [
           { name: "Ravi", age: 30, email: "ravi@example.com" },
           { name: "Anjali", age: 22, email: "anjali@example.com" },
@@ -16,9 +16,18 @@ const Objectoperation = () => {
           { name: "Kiran", age: 35, email: "kiran@example.com" },
           { name: "Ritu", age: 27, email: "ritu@example.com" },
         ],
+   known:{
+      name:"nishi"
+   }
+
       };
       function getUsersByType(type) {
-        setUserVal(data[type])
+        if(Array.isArray(data[type])){
+           setUserVal(data[type])
+         }
+         else{
+                   setUserVal([data[type]])
+         }
         // return data[type] || `No users found with type ${type}.`;
       }
       
